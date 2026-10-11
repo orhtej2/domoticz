@@ -19,16 +19,15 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-
     strategy:
       fail-fast: false
       matrix:
         include:
         # - { qemu_arch: x86_64,  appimage_arch: x86_64 }
-        # - { qemu_arch: armv7,   appimage_arch: armhf }
-        - { qemu_arch: aarch64, appimage_arch: aarch64 }
+        - { qemu_arch: armv7,   appimage_arch: armhf, runner_image: ubuntu-22.04-arm }
+        - { qemu_arch: aarch64, appimage_arch: aarch64, runner_image: ubuntu-22.04-arm }
 
+    runs-on: ${{ matrix.runner_image }}
     steps:
     - name : Checkout
       # if: ${{ github.event_name != 'workflow_dispatch' }}
