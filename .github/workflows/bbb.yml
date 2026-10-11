@@ -85,12 +85,12 @@ jobs:
           luarocks install luacov
           case "${{ matrix.qemu_arch }}" in 
             aarch64)
-              curl -sSL https://github.com/Kitware/CMake/releases/download/v"${{ env.Vcmake }}"/cmake-"${{ env.Vcmake }}"-linux-aarch64.tar.gz -o cmake.tar.gz;
+              curl -SL https://github.com/Kitware/CMake/releases/download/v"${{ env.Vcmake }}"/cmake-"${{ env.Vcmake }}"-linux-aarch64.tar.gz -o cmake.tar.gz;
               tar xf cmake.tar.gz --strip 1 -C /usr/local;
               export PATH=/usr/local/bin:$PATH;
               ;;
             armv7)
-              curl -sSL https://github.com/Kitware/CMake/releases/download/v"${{ env.Vcmake }}"/cmake-"${{ env.Vcmake }}".tar.gz -o cmake.tar.gz;
+              curl -SL https://github.com/Kitware/CMake/releases/download/v"${{ env.Vcmake }}"/cmake-"${{ env.Vcmake }}".tar.gz -o cmake.tar.gz;
               tar xf cmake.tar.gz;
               cd cmake-"${{ env.Vcmake }}";
               ./configure;
